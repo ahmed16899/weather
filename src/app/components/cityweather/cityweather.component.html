@@ -1,0 +1,68 @@
+<div class="container-fluid p-5">
+    <a class="btn btn-outline-primary m-2">{{city}}
+        <span class="flag-icon" [class]="icons"></span>
+    </a>
+    <div class="row py-5">
+
+        <table class="table table-striped table-hover w-75 mx-auto">
+            <h2>Climate Averages</h2>
+            <tbody>
+                <tr>
+                    <th>Temprature</th>
+                    <td>{{allResponseData.current_condition[0].temp_C}}°C</td>
+                </tr>
+                <tr>
+                    <th>Temprature</th>
+                    <td><img [src]="" class="rounded-circle w-25"></td>
+                </tr>
+                <tr>
+                    <th>windspeedKmph</th>
+                    <td>{{allResponseData.current_condition[0].windspeedKmph}} Kmph</td>
+                </tr>
+                <tr>
+                    <th>windspeedMiles</th>
+                    <td>{{allResponseData.current_condition[0].windspeedMiles}} Miles</td>
+                </tr>
+                <tr>
+                    <th>Wind Direction</th>
+                    <td>{{allResponseData.current_condition[0].winddir16Point}} </td>
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td>{{allResponseData.current_condition[0].humidity}}%</td>
+                </tr>
+                <tr>
+                    <th>Wind Direction Degree</th>
+                    <td>{{allResponseData.current_condition[0].winddirDegree}}°</td>
+                </tr>
+                <tr>
+                    <th>Visibility</th>
+                    <td>{{allResponseData.current_condition[0].visibility}} km</td>
+                </tr>
+                <tr>
+                    <th>Pressure</th>
+                    <td>{{allResponseData.current_condition[0].pressure}} mbar</td>
+                </tr>
+                <tr>
+                    <th>precipMM</th>
+                    <td>{{allResponseData.current_condition[0].precipMM | percent:'1.2'}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex-custom py-5">
+            <h2 class="">Absolute Max Temprature</h2>
+            <figure id="bar" class="text-center"></figure>
+            <h2 class="">Absolute Min Temprature</h2>
+            <figure class="text-center" id="bar1"></figure>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input #date type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button class="btn btn-primary" (click)="print(date.value)">Search</button>
+    </div>
+</div>
