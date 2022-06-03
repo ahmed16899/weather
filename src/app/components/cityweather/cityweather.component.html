@@ -1,54 +1,19 @@
 <div class="container-fluid p-5">
-    <a class="btn btn-outline-primary m-2">{{city}}
+    <h2>{{city}}
         <span class="flag-icon" [class]="icons"></span>
-    </a>
-    <div class="row py-5">
+    </h2>
+    <div class="mb-3 py-4 w-50">
+        <label for="exampleInputEmail1" class="form-label">Search fo specific Date</label>
+        <input #date type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <button class="btn btn-primary" (click)="getPastWeather(date.value)" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
 
-        <table class="table table-striped table-hover w-75 mx-auto">
-            <h2>Climate Averages</h2>
-            <tbody>
-                <tr>
-                    <th>Temprature</th>
-                    <td>{{allResponseData.current_condition[0].temp_C}}°C</td>
-                </tr>
-                <tr>
-                    <th>Temprature</th>
-                    <td><img [src]="" class="rounded-circle w-25"></td>
-                </tr>
-                <tr>
-                    <th>windspeedKmph</th>
-                    <td>{{allResponseData.current_condition[0].windspeedKmph}} Kmph</td>
-                </tr>
-                <tr>
-                    <th>windspeedMiles</th>
-                    <td>{{allResponseData.current_condition[0].windspeedMiles}} Miles</td>
-                </tr>
-                <tr>
-                    <th>Wind Direction</th>
-                    <td>{{allResponseData.current_condition[0].winddir16Point}} </td>
-                </tr>
-                <tr>
-                    <th>Humidity</th>
-                    <td>{{allResponseData.current_condition[0].humidity}}%</td>
-                </tr>
-                <tr>
-                    <th>Wind Direction Degree</th>
-                    <td>{{allResponseData.current_condition[0].winddirDegree}}°</td>
-                </tr>
-                <tr>
-                    <th>Visibility</th>
-                    <td>{{allResponseData.current_condition[0].visibility}} km</td>
-                </tr>
-                <tr>
-                    <th>Pressure</th>
-                    <td>{{allResponseData.current_condition[0].pressure}} mbar</td>
-                </tr>
-                <tr>
-                    <th>precipMM</th>
-                    <td>{{allResponseData.current_condition[0].precipMM | percent:'1.2'}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row py-5">
+        <!-- Table -->
+
+        <app-table [check]="false" [allResponseData]="allResponseData"></app-table>
+
+<!-- Graphes -->
 
         <div class="d-flex-custom py-5">
             <h2 class="">Absolute Max Temprature</h2>
@@ -58,11 +23,22 @@
         </div>
 
 
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input #date type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+</div>
+<!-- modal nshow past data weather -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-table *ngIf="allResponseHistoryData" [allResponseHistoryData]="allResponseHistoryData"
+                    [pastDate]="pastDate" [check]="true"></app-table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-        <button class="btn btn-primary" (click)="print(date.value)">Search</button>
     </div>
 </div>

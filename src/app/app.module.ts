@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CityweatherComponent } from './components/cityweather/cityweather.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CityweatherComponent
+    CityweatherComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

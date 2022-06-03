@@ -1,0 +1,72 @@
+<table *ngIf="!check" class="table table-striped table-hover w-75 mx-auto">
+    <h2>Climate Averages</h2>
+    <tbody>
+        <tr>
+            <th>Temprature</th>
+            <td>{{allResponseData.current_condition[0].temp_C}}°C</td>
+        </tr>
+        <!-- <tr>
+            <th>Temprature</th>
+            <td><img [src]="" class="rounded-circle w-25"></td>
+        </tr> -->
+        <tr>
+            <th>windspeedKmph</th>
+            <td>{{allResponseData.current_condition[0].windspeedKmph}} Kmph</td>
+        </tr>
+        <tr>
+            <th>windspeedMiles</th>
+            <td>{{allResponseData.current_condition[0].windspeedMiles}} Miles</td>
+        </tr>
+        <tr>
+            <th>Wind Direction</th>
+            <td>{{allResponseData.current_condition[0].winddir16Point}} </td>
+        </tr>
+        <tr>
+            <th>Humidity</th>
+            <td>{{allResponseData.current_condition[0].humidity}}%</td>
+        </tr>
+        <tr>
+            <th>Wind Direction Degree</th>
+            <td>{{allResponseData.current_condition[0].winddirDegree}}°</td>
+        </tr>
+        <tr>
+            <th>Visibility</th>
+            <td>{{allResponseData.current_condition[0].visibility}} km</td>
+        </tr>
+        <tr>
+            <th>Pressure</th>
+            <td>{{allResponseData.current_condition[0].pressure}} mbar</td>
+        </tr>
+        <tr>
+            <th>precipMM</th>
+            <td>{{allResponseData.current_condition[0].precipMM | percent:'1.2'}}</td>
+        </tr>
+    </tbody>
+</table>
+
+    <table *ngIf="check && allResponseHistoryData"  class="table table-striped table-hover w-75 mx-auto">
+        <h6>{{pastDate | date: 'EEEE, MMMM d, y'}} Weather</h6>
+        <tbody>
+            <tr>
+                <th>Temprature AVG</th>
+                <td>{{allResponseHistoryData.data.weather[0].avgtempC}}°C</td>
+            </tr>
+            <tr>
+                <th>Temprature MAX</th>
+                <td>{{allResponseHistoryData.data.weather[0].maxtempC}}°C</td>
+            </tr>
+            <tr>
+                <th>Temprature MIN</th>
+                <td>{{allResponseHistoryData.data.weather[0].mintempC}}°C</td>
+            </tr>
+            <tr>
+                <th>Temprature MIN</th>
+                <td>{{allResponseHistoryData.data.weather[0].sunHour}}</td> 
+            </tr>
+            <tr>
+                <th>ToTal Snow</th>
+                <td>{{allResponseHistoryData.data.weather[0].totalSnow_cm}} cm</td> 
+            </tr>
+            <tr>
+        </tbody>
+    </table>
