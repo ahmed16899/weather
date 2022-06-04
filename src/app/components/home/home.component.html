@@ -1,53 +1,53 @@
 <div class="container p-5">
-        <h2>{{country}} <span class="flag-icon" [class]="flagIcon"></span></h2>
-        <h6 class="pt-4 ">Search For another Country</h6>
-        <select  name="select1" onmousedown="if(this.options.length>5){this.size=5;}"  onchange='this.size=0;' onblur="this.size=0;" class="form-select w-50 my-4"  aria-label="size 3 select example">
-            <option selected >Choose a country</option>
-            <option (click)="selectCountry(newCountry)"  *ngFor="let newCountry of countries" >{{newCountry.name}}</option>
-          </select>   
-          <!-- Weather Info --> 
+    <h2>{{country}} <span class="flag-icon" [class]="flagIcon"></span></h2>
+    <h6 class="pt-4 ">Search For another Country</h6>
+    <select  name="select1" onmousedown="if(this.options.length>5){this.size=5;}"  onchange='this.size=0;' onblur="this.size=0;" class="form-select w-50 my-4"  aria-label="size 3 select example">
+        <option selected >Choose a country</option>
+        <option (click)="selectCountry(newCountry)"  *ngFor="let newCountry of countries" >{{newCountry.name}}</option>
+      </select>   
+      <!-- Weather Info --> 
 <div class="row py-5">
-    <div class="col-md-4 " *ngFor="let singleDayWeather of allResponseData.weather ; let i = index">
-        <div class="cont shadow" [ngClass]="{'bgCustom' : i==0}">
-            <table class="table table-striped table-hover">
-                <tbody>
-                    <tr>
-                        <th class="h5">{{singleDayWeather.date | date: 'EEEE, MMMM d, y'}}</th>
-                        <td><img [src]="icon" class="rounded-circle w-50"></td>
-                    </tr>
-                    <tr>
-                        <th>Average Temprature</th>
-                        <td>{{singleDayWeather.avgtempC}}°C</td>
-                    </tr>
-                    <tr>
-                        <th>Max Temprature</th>
-                        <td>{{singleDayWeather.maxtempC}}°C</td>
-                    </tr>
-                    <tr>
-                        <th>Min Temprature</th>
-                        <td>{{singleDayWeather.mintempC}}°C</td>
-                    </tr>
-                    <tr>
-                        <th>Sun Hour</th>
-                        <td>{{singleDayWeather.sunHour}} </td>
-                    </tr>
-                    <tr>
-                        <th>Total Snow</th>
-                        <td>{{singleDayWeather.totalSnow_cm}} cm</td>
-                    </tr>
-    
-                </tbody>
-            </table>
-        </div>
+<div class="col-md-4 " *ngFor="let singleDayWeather of allResponseData.weather ; let i = index">
+    <div class="cont shadow" [ngClass]="{'bgCustom' : i==0}">
+        <table class="table table-striped table-hover">
+            <tbody>
+                <tr>
+                    <th class="h5">{{singleDayWeather.date | date: 'EEEE, MMMM d, y'}}</th>
+                    <td><img [src]="icon" class="rounded-circle w-50"></td>
+                </tr>
+                <tr>
+                    <th>Average Temprature</th>
+                    <td>{{singleDayWeather.avgtempC}}°C</td>
+                </tr>
+                <tr>
+                    <th>Max Temprature</th>
+                    <td>{{singleDayWeather.maxtempC}}°C</td>
+                </tr>
+                <tr>
+                    <th>Min Temprature</th>
+                    <td>{{singleDayWeather.mintempC}}°C</td>
+                </tr>
+                <tr>
+                    <th>Sun Hour</th>
+                    <td>{{singleDayWeather.sunHour}} </td>
+                </tr>
+                <tr>
+                    <th>Total Snow</th>
+                    <td>{{singleDayWeather.totalSnow_cm}} cm</td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 </div>
+</div>
 <!-- cities of the country -->
-    <div *ngIf="staties.length!=0" class="col-12 text-center py-5">
-        <h2>Search for Weather {{country}}</h2>
-        <a *ngFor="let city of staties" class="btn btn-outline-primary m-2"
-            [routerLink]="['/weather' ,countryCodelower,country, city.name]">{{city.name}}
-            <span class="flag-icon" [class]="flagIcon"></span>
-        </a>
-    </div>
+<div *ngIf="staties.length!=0" class="col-12 text-center py-5">
+    <h2>Search for Weather {{country}}</h2>
+    <a *ngFor="let city of staties" class="btn btn-outline-primary m-2"
+        [routerLink]="['/weather' ,countryCodelower,country, city.name]">{{city.name}}
+        <span class="flag-icon" [class]="flagIcon"></span>
+    </a>
+</div>
 </div>
 

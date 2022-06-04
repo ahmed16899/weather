@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { City, Country, State } from 'country-state-city';
+import { Subscription } from 'rxjs';
 import { WorldweatherService } from 'src/app/Services/worldweather.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { WorldweatherService } from 'src/app/Services/worldweather.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit ,OnDestroy {
   constructor(private _worldweatherService: WorldweatherService
     , private _ActivatedRoute: ActivatedRoute
   ) { }
@@ -21,9 +22,8 @@ export class HomeComponent implements OnInit {
   countryCodelower!: string;
   staties: any[] = [];
   countries: any[] = [];
-
-
-
+  subscription = new Subscription;
+  
   ngOnInit(): void {
      this.countries=Country.getAllCountries()
      //detect country of user
@@ -39,6 +39,9 @@ export class HomeComponent implements OnInit {
       this.allResponseData = response.data
       this.icon = response.data.current_condition[0].weatherIconUrl[0].value;
     })
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 selectCountry(countryNew:any)
 {

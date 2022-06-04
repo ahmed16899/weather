@@ -20,16 +20,6 @@ export class TableComponent implements OnInit {
 
 
   ngOnInit(): void {
-    /*if(this.check)
-    {
-      console.log(this.city)
-      console.log(this.pastDate)
-
-      this._worldweatherService.getPast(this.city,this.pastDate).subscribe((response)=>{
-        console.log(response)
-        this.allResponseHistoryData=response;
-      });
-    }*/
    
   }
 
